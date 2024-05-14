@@ -11,18 +11,7 @@ int main()
 {
     int t;cin>>t;
     while(t--){
-        unordered_map<int,int> m;
-        int n;
-        cin>>n;
-        int i,j;
-        bool fi=true
-        for(int i=0;i<n;i++)
-        {
-            int a;
-            cin>>a;
-
-        }
-
+    
     }
     return 0;
 }

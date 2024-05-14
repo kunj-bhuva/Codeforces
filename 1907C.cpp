@@ -11,18 +11,22 @@ int main()
 {
     int t;cin>>t;
     while(t--){
-        unordered_map<int,int> m;
         int n;
         cin>>n;
-        int i,j;
-        bool fi=true
-        for(int i=0;i<n;i++)
+        string s;
+        cin>>s;
+        ll mf=0;
+        map<char,ll>freq;
+        for(ll i=0;i<n;i++)
         {
-            int a;
-            cin>>a;
-
+            freq[s[i]]++;
+            mf=max(mf,freq[s[i]]);
         }
-
+        if(mf>(n/2))
+            cout<<(n-(n-mf)*2)<<endl;
+        else{
+            cout<<n%2<<endl;
+        }
     }
     return 0;
 }

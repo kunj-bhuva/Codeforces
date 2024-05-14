@@ -11,18 +11,21 @@ int main()
 {
     int t;cin>>t;
     while(t--){
-        unordered_map<int,int> m;
-        int n;
-        cin>>n;
-        int i,j;
-        bool fi=true
-        for(int i=0;i<n;i++)
+    int n;
+    string a,b,c;
+    bool s=false;
+    cin>>a>>b>>c;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]==c[i]||b[i]==c[i])
         {
-            int a;
-            cin>>a;
+            cout<<"YES"<<endl;
+            s=true;
+            break;
 
         }
-
+    }
+    if(s==false)cout<<"NO"<<endl;
     }
     return 0;
 }

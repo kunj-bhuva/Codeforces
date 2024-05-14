@@ -1,0 +1,1 @@
+{"name":"Local: 1837D","url":"c:\\Users\\kunjb\\OneDrive\\Desktop\\CodeForces\\1837D.cpp","tests":[{"id":1715072216135,"input":"1\n8\n))(())((","output":"2\n2 2 2 1 2 2 2 1\n1\n1 1 1 1\n1\n1 1 1 1\n-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\kunjb\\OneDrive\\Desktop\\CodeForces\\1837D.cpp","group":"local","local":true}

@@ -11,18 +11,23 @@ int main()
 {
     int t;cin>>t;
     while(t--){
-        unordered_map<int,int> m;
         int n;
         cin>>n;
-        int i,j;
-        bool fi=true
-        for(int i=0;i<n;i++)
-        {
-            int a;
-            cin>>a;
-
-        }
-
+    vi a,b;
+    ip(a);
+    ip(b);
+    vector<pair<int, int>> combined;
+    for (int i = 0; i < a.size(); ++i) {
+        combined.push_back({a[i], b[i]});
+    }
+    sort(combined.begin(), combined.end());
+    for (auto& p : combined) {
+        cout << p.first <<" " ;
+    }
+    cout<<endl;
+    for (auto& p : combined) {
+        cout << p.second <<" " ;
+    }
     }
     return 0;
 }

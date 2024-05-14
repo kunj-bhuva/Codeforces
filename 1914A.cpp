@@ -11,18 +11,28 @@ int main()
 {
     int t;cin>>t;
     while(t--){
-        unordered_map<int,int> m;
         int n;
+        string s;
         cin>>n;
-        int i,j;
-        bool fi=true
-        for(int i=0;i<n;i++)
+        cin>>s;
+        unordered_map<char,int>m;
+        for(auto c:s)
         {
-            int a;
-            cin>>a;
+            if(m.find(c)==m.end())
+            {
+                m[c]=1;
 
+            }
+            else m[c]++;
         }
-
+        int c=0;
+        for(auto i:m)
+        {
+            int a=i.first-64;
+            int b=i.second;
+            if(b>=a)c++;
+        }
+        cout<<c<<endl;
     }
     return 0;
 }
