@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef vector<long long int> vii;
+typedef vector<int> vi;
+
+// Macro definitions
+#define sort(t) sort(t.begin(),t.end())
+#define pb(x) push_back(x)
+#define ppb(x) pop_back(x)
+#define fi(i, a, b) for (ll i = a; i < b; i++)
+#define Na cout << "NO" << endl
+#define Ha cout << "YES" << endl
+#define na cout << "No" << endl
+#define ha cout << "Yes" << endl
+
+// Additional macros for printing and input
+#define printv(v) for(auto i : v) cout << i << ' '; cout << endl;
+#define ip(a, n) for(int i = 0; i < n; i++) { int xvyz; cin >> xvyz; a.push_back(xvyz); }
+
+void solve()
+{
+    long long n,m;
+    cin>>n>>m;
+    long long mhalf=m/2;
+    long long nhalf=n/2;
+    long long di=mhalf*nhalf*1LL;
+    
+    long long ans=(-1)*di*1LL;
+    
+    ans+=2*(n*mhalf)*1LL;
+    
+    ans*=2*1LL;
+    
+    cout<<ans<<endl;
+    return;
+}
+// Main function and template
+int main() {
+    int t; cin >> t;
+    while(t--) {
+        solve();
+    }
+    return 0;
+}

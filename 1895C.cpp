@@ -1,104 +1,96 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<long long int> vii;
-typedef vector<int> vi;
+#define ll long long
 
-#define printv(v) for (auto i : v) cout << i << ' '; cout << endl;
-#define ip(a, n) for (int i = 0; i < n; i++) { int xvyz; cin >> xvyz; a.push_back(xvyz); }
+ll findSum(string &s){
+    ll c=0;
+    for(auto &d:s)
+    c+=(d-'0');
+    return c;
+}
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    int n;
-    cin >> n;
-    vector<string> a;
 
-    for (int i = 0; i < n; i++) {
-        string s;
-        cin >> s;
-        a.push_back(s);
-    }
-
-    int ans = 0;
-    vector<vector<int>> sum(n, vector<int>(5, 0));
-
-    for (int i = 0; i < n; i++) {
-        sum[i][0] = a[i][0] - '0';
-        for (int j = 1; j < a[i].size(); j++) {
-            sum[i][j] = a[i][j] - '0' + sum[i][j - 1];
-        }
-    }
-    set<pair<int,int>>s;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (i == j) {ans++;
-                s.insert({i,j});
-                continue;
-                }
-            
-            
-            int num1, num2, no;
-            int size_i = a[i].size();
-            int size_j = a[j].size();
-            int d = abs(size_i - size_j);
-
-            if (size_i == size_j && sum[i][size_i - 1] == sum[j][size_j - 1]) {
-                ans++;
-                s.insert({i,j});
-            }
-            else if ((size_i + size_j) % 2 == 0) 
-            {
-                if(size_i>size_j)
-                {
-                    num1 = sum[j][size_j - 1];
-                    num2 = sum[i][size_i - 1];
-                    no = sum[i][size_i - 1 - d / 2];
-                    num1=num1+ (num2-no);
-                    if(num1==no)
-                    {
-                        ans++;
-                        s.insert({i,j});
-                    }
-                    num1 = sum[j][size_j - 1];
-                    num2 = sum[i][size_i - 1];
-                    no=sum[i][d/2-1];
-                    num1+=no;
-                    if(num1==(num2-no))
-                    {
-                        ans++;
-                        s.insert({j,i});
-                    }
-
-                }
-                else {
-                    num1 = sum[i][size_i - 1];
-                    num2 = sum[j][size_j - 1];
-                    no = sum[j][size_j - 1 - d / 2];
-                    num1=num1+(num2-no);
-                    if(num1==no)
-                    {
-                        ans++;
-                        s.insert({j,i});
-                    }
-                    num2 = sum[j][size_j - 1];
-                    num1 = sum[i][size_i - 1];
-                    no=sum[j][d/2-1];
-                    num1+=no;
-                    if(num1==(num2-no))
-                    {
-                        ans++;
-                        s.insert({i,j});
-                    }
-                }
-                
-                
-                
-            }
-        }
-    }
-
+ll findPairs(vector<string> &v){
+    vector<vector<ll>> dp(11,vector<ll>(60,0));
+    ll ans = 0;
+    ll n=v.size();
     
-    cout<<s.size();
+     for(int i=0;i<n;i++){
+        string &s = v[i];
+        ll sum = findSum(s);
+        ll len = s.size();
+         dp[len][sum]++;
+     }
+    
+    
+    for(int i=0;i<n;i++){
+        string s=v[i];
+        ll sum = findSum(v[i]);
+        ll len = s.size();
+        
+        ans+= dp[len][sum];
+        
+        // considering it as prefix
+        ll removedSum = 0, r=0;
+        for(ll i=len-1;i>0;i--){
+            removedSum+=(s[i] - '0');
+            r++;
+            
+            ll left = len-r;
+            ll leftSum = sum - removedSum ;
+            
+            ll remainingRight = left - r;
+            ll remainingRightSum = leftSum - removedSum;
+            
+            if(remainingRight>=0 && remainingRightSum>=0  && ((left + remainingRight + r)%2==0))
+            ans+= dp[remainingRight][remainingRightSum];
+        }
+        
+        // considering it as suffix
+        removedSum = 0, r=0;
+        for(int i=0;i<len-1;i++){
+            removedSum+=(s[i] - '0');
+            r++;
+            
+            ll right = len-r;
+            ll rightSum = sum - removedSum;
+            
+            ll remainingLeft = right - r;
+            ll remainingLeftSum = rightSum - removedSum;
+            
+            if(remainingLeftSum>=0 && remainingLeft >=0 && ((right + remainingLeft + r)%2==0))
+            ans+= dp[remainingLeft][remainingLeftSum];
+        }
+
+        
+    }
+    // ans+=n;
+    return ans;
+}
+
+
+void solve(){
+    ll n;
+    cin>>n;
+    vector<string> v(n);
+
+    for(int i=0;i<n;i++){
+    cin>>v[i];
+    }
+    
+    ll ans = findPairs(v);
+    
+    
+    cout<<ans<<"\n";
+    
+}
+
+int main(){
+    
+    ll t=1;
+    // cin>>t;
+    while(t--)
+    solve();
+    
     return 0;
 }

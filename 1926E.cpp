@@ -1,31 +1,30 @@
 #include <bits/stdc++.h>
+ 
 using namespace std;
-typedef long long ll;
-typedef vector<long long int> vii;
-typedef vector<int> vi;
-
-// Macro definitions
-#define sort(t) sort(t.begin(),t.end())
-#define pb(x) push_back(x)
-#define ppb(x) pop_back(x)
-#define fi(i, a, b) for (ll i = a; i < b; i++)
-#define Na cout << "NO" << endl
-#define Ha cout << "YES" << endl
-#define na cout << "No" << endl
-#define ha cout << "Yes" << endl
-
-// Additional macros for printing and input
-#define printv(v) for(auto i : v) cout << i << ' '; cout << endl;
-#define ip(a, n) for(int i = 0; i < n; i++) { int xvyz; cin >> xvyz; a.push_back(xvyz); }
-
-// Main function and template
+ 
+const int MAX = 200'007;
+const int MOD = 1'000'000'007;
+ 
+void solve() {
+	int n, k;
+	cin >> n >> k;
+	vector<int> v;
+	while (n) {
+		v.push_back((n + 1) / 2);
+		n /= 2;
+	}
+	int tot = 0, pow2 = 1;
+	for (int x : v) {
+		if (tot < k && k <= tot + x) {
+			cout << pow2 * (2 * (k - tot) - 1) << '\n';
+			return;
+		}
+		tot += x;
+		pow2 *= 2;
+	}
+}
+ 
 int main() {
-    int t; cin >> t;
-    while(t--) {
-        int n,k;
-        cin>>n>>k;
-        
-        // Your code logic goes here
-    }
-    return 0;
+	int tt; cin >> tt; for (int i = 1; i <= tt; i++) {solve();}
+	// solve();
 }
