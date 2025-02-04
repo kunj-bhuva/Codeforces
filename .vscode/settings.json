@@ -25,7 +25,15 @@
         "cmath": "cpp",
         "limits": "cpp",
         "bitset": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "chrono": "cpp",
+        "random": "cpp",
+        "array": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp",
+        "string": "cpp",
+        "compare": "cpp",
+        "xstddef": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

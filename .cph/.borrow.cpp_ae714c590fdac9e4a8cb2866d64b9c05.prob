@@ -1,0 +1,1 @@
+{"name":"Local: borrow","url":"c:\\Users\\kunjb\\OneDrive\\Desktop\\CodeForces\\borrow.cpp","tests":[{"id":1735137735837,"input":"3\n3\n1 2 3\n4\n1 1 2 2\n4\n1 1 2 1\n","output":"6\n6\n7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\kunjb\\OneDrive\\Desktop\\CodeForces\\borrow.cpp","group":"local","local":true}
